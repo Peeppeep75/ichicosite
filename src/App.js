@@ -4,34 +4,35 @@ import './App.css';
 import React, { useState } from 'react';
 function App() {
   const [count, setCount] = useState(0);
-  const smileemojis = ["😀", "😃", "😄", "😁", "😆", "😅", "😂", "🤣", "😊", "😇"];
-  const sademojis =["😞", "😒", "🙄", "😭", "😵‍💫", "😮‍💨", "😨", "😫" , "😣", "🫥"];
-  const arrayLength = smileemojis.length
-  const arrayIndex = count % arrayLength
-  const emojiNicoNico = smileemojis[3]
-  console.log("emoji", smileemojis)
-  console.log("niconico", emojiNicoNico)
-  const currentEmoji = smileemojis[arrayIndex];
+  const [isSadMode, setIsSadMode] = useState(false);
 
+  const smileemojis = ["😀", "😃", "😄", "😁", "😆", "😅", "😂", "🤣", "😊", "😇"];
+  const sademojis = ["😞", "😒", "🙄", "😭", "😵‍💫", "😮‍💨", "😨", "😫" , "😣", "🫥"];
+  const arrayLength = isSadMode ? sademojis.length : smileemojis.length; 
+  const arrayIndex = count % arrayLength;
+  const currentEmoji = isSadMode ? sademojis[arrayIndex] : smileemojis[arrayIndex]; 
+
+  const handleDontPush = () => {
+    setIsSadMode(true);
+    setCount(count - 1);
+  };
+
+  const handleMakeSmile = () => {
+    setIsSadMode(false);
+    setCount(count + 1);
+  };
 
   return (
     <div className="App">
-  <header className="App-header">
-    <div className="emoji">{currentEmoji}</div>
-    <p>You clicked {count} times</p>
-    <p>count % emojis.length: {count % emojis.length}</p>
-    <button onClick={() => setCount(count + 1)}>Don't push</button>
-    <button onClick={() => setCount(count + 1)}>
-
-      <></>
-      Make smile  </button>
-    
-
-  </header>
-</div>
-);
-
-
+      <header className="App-header">
+        <div className="emoji">{currentEmoji}</div>
+        <p>You clicked {count} times</p>
+        <p>count % emojis.length: {count % arrayLength}</p>
+        <button onClick={handleDontPush}>Don't push</button>
+        <button onClick={handleMakeSmile}>Make smile</button>
+      </header>
+    </div>
+  );
 }
 
 export default App;

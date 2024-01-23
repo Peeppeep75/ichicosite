@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 
-class Counter extends Comment {
+class Counter extends Component {
         
-    render(){
-        return(
+    render() {
+        return (
             <div>
                 <p>Count:</p>
                 <button>+</button>
                 <button>-</button>
             </div>
-        )
-
+        );
     }
 }
+
 export default Counter;
