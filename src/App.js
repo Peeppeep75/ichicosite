@@ -12,8 +12,8 @@ function App() {
   const arrayLength = isSadMode ? sademojis.length : smileemojis.length;
   const arrayIndex = count % arrayLength;
   const currentEmoji = isSadMode ? sademojis[arrayIndex] : smileemojis[arrayIndex];
-  const niconicoemojis = smileemojis[3]
-  const shikushikuemojis = sademojis[3]
+  const niconicoemojis = smileemojis[2]
+  const shikushikuemojis = sademojis[2]
 
 
   const handleDontPush = () => {
