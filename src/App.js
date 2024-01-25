@@ -16,13 +16,6 @@ function App() {
   const shikushikuemojis = sademojis[2]
 
 
-  const handleDontPush = () => {
-    console.log("shikushiku");
-    console.log("sademojis:", shikushikuemojis);
-    setIsSadMode(true);
-    setCount(count - 1);
-  };
-
   const handleMakeSmile = () => {
     console.log("niconico");
     console.log("smileemojis:", niconicoemojis);
@@ -30,17 +23,33 @@ function App() {
     setCount(count + 1);
   };
 
+  const handleDontPush = () => {
+    console.log("shikushiku");
+    console.log("sademojis:", shikushikuemojis);
+    if (count > 0) {
+    setIsSadMode(true);
+    setCount(count - 1);
+    }
+  };
+
+
   return (
     <div className="App">
       <header className="App-header">
         <div className="emoji">{currentEmoji}</div>
         <p>You clicked {count} times</p>
         <p>count % emojis.length: {count % arrayLength}</p>
-        <button onClick={handleDontPush}>Don't push</button>
         <button onClick={handleMakeSmile}>Make smile</button>
+        
+        <button onClick={handleDontPush}>Don't push</button>
+        
       </header>
     </div>
   );
 }
 
 export default App;
+
+}
+
+
